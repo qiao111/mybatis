@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mybatis.operate">
+	<insert id="insert" parameterType="cn.com.ql.bean.UserInfo">
+		<selectKey order="BEFORE" resultType="int" keyProperty="id" > 
+		select idauto.nextval from dual</selectKey><!-- 在插入前先执行，返回值类型为int -->
+		insert into userinfo(id,username,password,age,makedate)
+		 values (#{id},#{username},#{password},#{age},#{makedate})
+	</insert>
+	<delete id="deleteUserInfoById" parameterType="int">
+		delete from userinfo where id = #{id}
+	</delete>
+	<select id="getSigleUserInfo" parameterType="int" resultType="cn.com.ql.bean.UserInfo">
+		select * from userinfo where id = #{id}
+	</select>
+	<select id="getAllUserInfo" resultType="cn.com.ql.bean.UserInfo"><!-- resultSets的用法 -->
+		select * from userinfo
+	</select>
+	<update id="updateUserInfoById" parameterType="cn.com.ql.bean.UserInfo">
+		update userinfo set username=#{username},password=#{password},age=#{age},makedate=#{makedate}
+		where id = #{id}
+	</update>
+</mapper>

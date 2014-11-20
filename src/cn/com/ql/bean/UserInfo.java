@@ -6,8 +6,8 @@ public class UserInfo {
 	private int id;
 	private String username;
 	private String password;
+	private int age;
 	private Date makedate;
-	private String maketime;
 	public int getId() {
 		return id;
 	}
@@ -32,10 +32,17 @@ public class UserInfo {
 	public void setMakedate(Date makedate) {
 		this.makedate = makedate;
 	}
-	public String getMaketime() {
-		return maketime;
+	public int getAge() {
+		return age;
 	}
-	public void setMaketime(String maketime) {
-		this.maketime = maketime;
+	public void setAge(int age) {
+		this.age = age;
 	}
+	@Override
+	public String toString() {
+		return "UserInfo [id=" + id + ", username=" + username + ", password="
+				+ password + ", age=" + age + ", makedate=" + makedate + "]";
+	}
+	
+	
 }

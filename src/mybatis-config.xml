@@ -1,16 +1,20 @@
-<?xml version = "1.0" encoding="UTF-8"?>
-<!DOCTYPE configuration PUBLIC "- //mybatis.org//DTD Config 3.0 /EN"
- "http://mybatis.org/dtd/mybatis-3-config.dtd">
- <configuration>
- 	<environments default="development">
- 		<environment id="development">
- 			<transactionManager type="JDBC"/>
- 			<dataSource type="POOLED">
- 			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
- 			<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
- 			<property name="username" value="qiaolin"/>
- 			<property name="password" value="qiaolin"/>
- 			</dataSource>
- 		</environment>
- 	</environments>
- </configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD//config 3.0 //EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<environments default="development">
+		<environment id="development">
+		<transactionManager type="JDBC"/>	<!--两种类型：JDBC:使用datesource的连接来管理事务范围
+											MANAGE:自己不进行事务的提交和回滚，依靠容器来管理事务，设置closeConnection为false,取消自动关闭连接  -->
+		<dataSource type="POOLED">  <!--三种：UNPOOLED,POOLED,JNDI:POOLED:每次被请求时简单的打开和关闭连接，
+					JNDI:这个数据源的实现是为了使用如 Spring 或应用服务器这类的容器，容器可以集中或在外部配置数据源，然后放置一个 JNDI 上下文的引用。  -->
+			<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+			<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+			<property name="username" value="qiaolin"/>
+			<property name="password" value="qiaolin"/>
+		</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="userinfoMapping.xml"/><!-- 此处的疑问使用url -->
+	</mappers>
+</configuration>
